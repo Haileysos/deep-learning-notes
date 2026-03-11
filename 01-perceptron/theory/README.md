@@ -57,24 +57,25 @@ print(perceptron(1,1))
 ```python
 import numpy as np
 
-epsilon = 0.0000001
+epsilon = 0.0000001 # 부동소수점 오차 방지를 위함
 
-def perceptron(x1, x2):
-    X = np.array([x1, x2])
-    W = np.array([1.0, 1.0])
-    B = -1.5
+def perceptron(x1, x2): # 퍼셉트론이라는 작은 AI를 만듦
+                        # 두 개의 숫자 를 입력으로 받음 x1=1, x2=0
+    X = np.array([x1, x2]) # 입력을 배열로 만듦 X=[1,0]
+    W = np.array([1.0, 1.0]) # 가중치를 나타냄 w1=1, w2=1
+    B = -1.5 # 바이어스
 
-    sum = np.dot(W, X) + B 
-
+    sum = np.dot(W, X) + B # 퍼셉트론 핵심 공식
+                           # w1x1 + w2x2 + b
     if sum > epsilon:
         return 1
     else:
         return 0
 
-print(perceptron(0,0))
-print(perceptron(1,0))
-print(perceptron(0,1))
-print(perceptron(1,1))
+print(perceptron(0,0)) # 0x1 + 0x1 + (-1.5) = -1.5 < epsilon -> 0
+print(perceptron(1,0)) # 1x1 + 0x1 + (-1.5) = -0.5 < epsilon -> 0
+print(perceptron(0,1)) # 0x1 + 1x1 + (-1.5) = -0.5 < epsilon -> 0
+print(perceptron(1,1)) # 1x1 + 1x1 + (-1.5) = 0.5 > epsilon -> 1
 ```
 
 &nbsp;
